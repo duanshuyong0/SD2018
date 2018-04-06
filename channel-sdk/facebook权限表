@@ -1,0 +1,11 @@
+添加评论
+publish_action
+publish_pages
+A user access token with publish_action permission can be used to publish new comments on behalf of that user.
+A page access token with publish_pages permission can be used to publish new comments on behalf of that Page.
+
+
+主页获取会话消息，发送会话消息
+read_page_mailboxes
+
+
