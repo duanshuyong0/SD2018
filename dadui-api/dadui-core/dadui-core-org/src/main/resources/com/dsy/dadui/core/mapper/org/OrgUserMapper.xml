@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsy.dadui.core.mapper.org.OrgUserMapper" >
+  <resultMap id="BaseResultMap" type="com.dsy.dadui.sdk.entity.org.OrgUser" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="OPENID" property="openid" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="TINYINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="DELETE_TAG" property="deleteTag" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ORG_ID, USER_ID, OPENID, STATUS, CREATE_TIME, UPDATE_TIME, DELETE_TAG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_org_user
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_org_user
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dsy.dadui.sdk.entity.org.OrgUser" >
+    insert into t_org_user (ID, ORG_ID, USER_ID, 
+      OPENID, STATUS, CREATE_TIME, 
+      UPDATE_TIME, DELETE_TAG)
+    values (#{id,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
+      #{openid,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteTag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsy.dadui.sdk.entity.org.OrgUser" >
+    insert into t_org_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="openid != null" >
+        OPENID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="deleteTag != null" >
+        DELETE_TAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null" >
+        #{deleteTag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsy.dadui.sdk.entity.org.OrgUser" >
+    update t_org_user
+    <set >
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        OPENID = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null" >
+        DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsy.dadui.sdk.entity.org.OrgUser" >
+    update t_org_user
+    set ORG_ID = #{orgId,jdbcType=INTEGER},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      OPENID = #{openid,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=TINYINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      DELETE_TAG = #{deleteTag,jdbcType=TINYINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+    <select id="getList" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_org_user
+    where ORG_ID = #{id,jdbcType=BIGINT} AND DELETE_TAG!=1
+  </select>
+  
+  
+  
+</mapper>

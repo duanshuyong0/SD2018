@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsy.dadui.core.mapper.org.OrgConMapper" >
+  <resultMap id="BaseResultMap" type="com.dsy.dadui.sdk.entity.org.OrgCon" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="ORG_ID" property="orgId" jdbcType="INTEGER" />
+    <result column="STATUS" property="status" jdbcType="TINYINT" />
+    <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
+    <result column="CREATE_USER_OPENID" property="createUserOpenid" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="DELETE_TAG" property="deleteTag" jdbcType="TINYINT" />
+  </resultMap>
+  
+  <resultMap id="ResultMapWithBLOBs" type="com.dsy.dadui.sdk.entity.org.OrgCon" extends="BaseResultMap" >
+    <result column="CON" property="con" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ID, ORG_ID, STATUS, CREATE_USER_ID, CREATE_USER_OPENID, CREATE_TIME, UPDATE_TIME, 
+    DELETE_TAG
+  </sql>
+  
+  <sql id="Blob_Column_List" >
+    CON
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_con
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_con
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dsy.dadui.sdk.entity.org.OrgCon" >
+    insert into t_con (ID, ORG_ID, STATUS, 
+      CREATE_USER_ID, CREATE_USER_OPENID, CREATE_TIME, 
+      UPDATE_TIME, DELETE_TAG, CON
+      )
+    values (#{id,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, 
+      #{createUserId,jdbcType=VARCHAR}, #{createUserOpenid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteTag,jdbcType=TINYINT}, #{con,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsy.dadui.sdk.entity.org.OrgCon" >
+    insert into t_con
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>a
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID,
+      </if>
+      <if test="createUserOpenid != null" >
+        CREATE_USER_OPENID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="deleteTag != null" >
+        DELETE_TAG,
+      </if>
+      <if test="con != null" >
+        CON,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null" >
+        #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserOpenid != null" >
+        #{createUserOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null" >
+        #{deleteTag,jdbcType=TINYINT},
+      </if>
+      <if test="con != null" >
+        #{con,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsy.dadui.sdk.entity.org.OrgCon" >
+    update t_con
+    <set >
+      <if test="orgId != null" >
+        ORG_ID = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createUserId != null" >
+        CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserOpenid != null" >
+        CREATE_USER_OPENID = #{createUserOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null" >
+        DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+      </if>
+      <if test="con != null" >
+        CON = #{con,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dsy.dadui.sdk.entity.org.OrgCon" >
+    update t_con
+    set ORG_ID = #{orgId,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=TINYINT},
+      CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      CREATE_USER_OPENID = #{createUserOpenid,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+      CON = #{con,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsy.dadui.sdk.entity.org.OrgCon" >
+    update t_con
+    set ORG_ID = #{orgId,jdbcType=INTEGER},
+      STATUS = #{status,jdbcType=TINYINT},
+      CREATE_USER_ID = #{createUserId,jdbcType=VARCHAR},
+      CREATE_USER_OPENID = #{createUserOpenid,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      DELETE_TAG = #{deleteTag,jdbcType=TINYINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+    <select id="getList" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_con
+    where ORG_ID = #{orgId,jdbcType=BIGINT} AND DELETE_TAG!=1
+  </select>
+  
+  
+</mapper>

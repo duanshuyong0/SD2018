@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsy.dadui.core.mapper.org.OrgMapper">
+	<resultMap id="BaseResultMap" type="com.dsy.dadui.sdk.entity.org.Org">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="TINYINT" />
+		<result column="IMG_PATH" property="imgPath" jdbcType="VARCHAR" />
+		<result column="CREATE_USER_ID" property="createUserId"
+			jdbcType="INTEGER" />
+		<result column="CREATE_USER_OPENID" property="createUserOpenid"
+			jdbcType="VARCHAR" />
+		<result column="CREATE_USER_INTRO" property="createUserIntro"
+			jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="DELETE_TAG" property="deleteTag" jdbcType="TINYINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, NAME, STATUS, IMG_PATH, CREATE_USER_ID, CREATE_USER_OPENID,
+		CREATE_USER_INTRO,
+		CREATE_TIME, UPDATE_TIME, DELETE_TAG
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_org
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_org
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.dsy.dadui.sdk.entity.org.Org">
+		insert into t_org (ID, NAME, STATUS,
+		IMG_PATH, CREATE_USER_ID, CREATE_USER_OPENID,
+		CREATE_USER_INTRO, CREATE_TIME, UPDATE_TIME,
+		DELETE_TAG)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{status,jdbcType=TINYINT},
+		#{imgPath,jdbcType=VARCHAR}, #{createUserId,jdbcType=INTEGER},
+		#{createUserOpenid,jdbcType=VARCHAR},
+		#{createUserIntro,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{deleteTag,jdbcType=TINYINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.dsy.dadui.sdk.entity.org.Org">
+		insert into t_org
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="imgPath != null">
+				IMG_PATH,
+			</if>
+			<if test="createUserId != null">
+				CREATE_USER_ID,
+			</if>
+			<if test="createUserOpenid != null">
+				CREATE_USER_OPENID,
+			</if>
+			<if test="createUserIntro != null">
+				CREATE_USER_INTRO,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME,
+			</if>
+			<if test="deleteTag != null">
+				DELETE_TAG,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=TINYINT},
+			</if>
+			<if test="imgPath != null">
+				#{imgPath,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId,jdbcType=INTEGER},
+			</if>
+			<if test="createUserOpenid != null">
+				#{createUserOpenid,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserIntro != null">
+				#{createUserIntro,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleteTag != null">
+				#{deleteTag,jdbcType=TINYINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.dsy.dadui.sdk.entity.org.Org">
+		update t_org
+		<set>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="imgPath != null">
+				IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserId != null">
+				CREATE_USER_ID = #{createUserId,jdbcType=INTEGER},
+			</if>
+			<if test="createUserOpenid != null">
+				CREATE_USER_OPENID = #{createUserOpenid,jdbcType=VARCHAR},
+			</if>
+			<if test="createUserIntro != null">
+				CREATE_USER_INTRO = #{createUserIntro,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleteTag != null">
+				DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.dsy.dadui.sdk.entity.org.Org">
+		update t_org
+		set NAME = #{name,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=TINYINT},
+		IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+		CREATE_USER_ID = #{createUserId,jdbcType=INTEGER},
+		CREATE_USER_OPENID = #{createUserOpenid,jdbcType=VARCHAR},
+		CREATE_USER_INTRO = #{createUserIntro,jdbcType=VARCHAR},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+		UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+		DELETE_TAG = #{deleteTag,jdbcType=TINYINT}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	
+	
+		<select id="getList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_org
+		where DELETE_TAG!=1
+	</select>
+	
+</mapper>

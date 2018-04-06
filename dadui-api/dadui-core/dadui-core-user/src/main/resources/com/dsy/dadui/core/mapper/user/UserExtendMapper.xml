@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsy.dadui.core.mapper.user.UserExtendMapper" >
+  <resultMap id="BaseResultMap" type="com.dsy.dadui.sdk.entity.user.UserExtend" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="OPENID" property="openid" jdbcType="VARCHAR" />
+    <result column="BIRTHDAY_TIME" property="birthdayTime" jdbcType="TIMESTAMP" />
+    <result column="HEIGHT" property="height" jdbcType="INTEGER" />
+    <result column="PROFESSION" property="profession" jdbcType="VARCHAR" />
+    <result column="IS_HOUSE" property="isHouse" jdbcType="TINYINT" />
+    <result column="IS_CAR" property="isCar" jdbcType="TINYINT" />
+    <result column="INTRODUCE" property="introduce" jdbcType="VARCHAR" />
+    <result column="REQUIRES" property="require" jdbcType="VARCHAR" />
+    <result column="INCOME" property="income" jdbcType="VARCHAR" />
+    <result column="DEGREE" property="degree" jdbcType="VARCHAR" />
+    <result column="WECHATNUM" property="weChatNum" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="DELETE_TAG" property="deleteTag" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, USER_ID, OPENID, BIRTHDAY_TIME, HEIGHT, PROFESSION, IS_HOUSE, IS_CAR, INTRODUCE, 
+    CREATE_TIME, UPDATE_TIME, DELETE_TAG, REQUIRES,INCOME,DEGREE,WECHATNUM
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_extend
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_user_extend
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dsy.dadui.sdk.entity.user.UserExtend" >
+    insert into t_user_extend (ID, USER_ID, OPENID, 
+      BIRTHDAY_TIME, HEIGHT, PROFESSION, 
+      IS_HOUSE, IS_CAR, INTRODUCE, REQUIRES,INCOME,DEGREE,WECHATNUM
+      CREATE_TIME, UPDATE_TIME, DELETE_TAG
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{birthdayTime,jdbcType=TIMESTAMP}, #{height,jdbcType=INTEGER}, #{profession,jdbcType=VARCHAR}, 
+      #{isHouse,jdbcType=TINYINT}, #{isCar,jdbcType=TINYINT}, #{introduce,jdbcType=VARCHAR}, #{require,jdbcType=VARCHAR},
+      #{income,jdbcType=VARCHAR},
+      #{degree,jdbcType=VARCHAR},
+      #{weChatNum,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleteTag,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsy.dadui.sdk.entity.user.UserExtend" >
+    insert into t_user_extend
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="openid != null" >
+        OPENID,
+      </if>
+      <if test="birthdayTime != null" >
+        BIRTHDAY_TIME,
+      </if>
+      <if test="height != null" >
+        HEIGHT,
+      </if>
+      <if test="profession != null" >
+        PROFESSION,
+      </if>
+      <if test="isHouse != null" >
+        IS_HOUSE,
+      </if>
+      <if test="isCar != null" >
+        IS_CAR,
+      </if>
+      <if test="introduce != null" >
+        INTRODUCE,
+      </if>
+      <if test="require != null" >
+       REQUIRES,
+      </if>
+       <if test="income != null" >
+       INCOME,
+      </if>
+       <if test="degree != null" >
+       DEGREE,
+      </if>
+       <if test="weChatNum != null" >
+       WECHATNUM,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="deleteTag != null" >
+        DELETE_TAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdayTime != null" >
+        #{birthdayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="isHouse != null" >
+        #{isHouse,jdbcType=TINYINT},
+      </if>
+      <if test="isCar != null" >
+        #{isCar,jdbcType=TINYINT},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+       <if test="require != null" >
+        #{require,jdbcType=VARCHAR},
+      </if>
+      
+         <if test="income != null" >
+        #{income,jdbcType=VARCHAR},
+      </if>
+      
+         <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      
+         <if test="weChatNum != null" >
+        #{weChatNum,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null" >
+        #{deleteTag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsy.dadui.sdk.entity.user.UserExtend" >
+    update t_user_extend
+    <set >
+      <if test="userId != null" >
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        OPENID = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdayTime != null" >
+        BIRTHDAY_TIME = #{birthdayTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="height != null" >
+        HEIGHT = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="profession != null" >
+        PROFESSION = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="isHouse != null" >
+        IS_HOUSE = #{isHouse,jdbcType=TINYINT},
+      </if>
+      <if test="isCar != null" >
+        IS_CAR = #{isCar,jdbcType=TINYINT},
+      </if>
+      <if test="introduce != null" >
+        INTRODUCE = #{introduce,jdbcType=VARCHAR},
+      </if>
+       <if test="require != null" >
+        REQUIRES = #{require,jdbcType=VARCHAR},
+      </if>
+      
+        <if test="income != null" >
+        INCOME = #{income,jdbcType=VARCHAR},
+      </if>
+      
+        <if test="degree != null" >
+        DEGREE = #{degree,jdbcType=VARCHAR},
+      </if>
+      
+        <if test="weChatNum != null" >
+        WECHATNUM = #{weChatNum,jdbcType=VARCHAR},
+      </if>
+      
+      
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null" >
+        DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsy.dadui.sdk.entity.user.UserExtend" >
+    update t_user_extend
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      OPENID = #{openid,jdbcType=VARCHAR},
+      BIRTHDAY_TIME = #{birthdayTime,jdbcType=TIMESTAMP},
+      HEIGHT = #{height,jdbcType=INTEGER},
+      PROFESSION = #{profession,jdbcType=VARCHAR},
+      IS_HOUSE = #{isHouse,jdbcType=TINYINT},
+      IS_CAR = #{isCar,jdbcType=TINYINT},
+      INTRODUCE = #{introduce,jdbcType=VARCHAR},
+      REQUIRES = #{require,jdbcType=VARCHAR},
+      INCOME = #{income,jdbcType=VARCHAR},
+      DEGREE = #{degree,jdbcType=VARCHAR},
+      WECHATNUM = #{weChatNum,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      DELETE_TAG = #{deleteTag,jdbcType=TINYINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+    <select id="queryByIdList" resultMap="BaseResultMap" parameterType="java.util.List" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_extend
+    <trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="list != null">
+			   USER_ID in 
+				<foreach collection="list" item="item" open="(" close=")"
+					separator=",">
+					#{item}
+				</foreach>
+			</if>
+		   </trim>
+  </select>
+  
+   <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_extend
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  
+</mapper>

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: mail-sdk
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Lenovo
+Implementation-Vendor-Id: com.loonxi
+Build-Jdk: 1.8.0_121
+Implementation-URL: http://projects.spring.io/spring-boot/mail-sdk/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

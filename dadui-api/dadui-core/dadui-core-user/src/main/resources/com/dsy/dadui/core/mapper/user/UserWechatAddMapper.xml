@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dsy.dadui.core.mapper.user.UserWechatAddMapper">
+	<resultMap id="BaseResultMap" type="com.dsy.dadui.sdk.entity.user.UserWechatAdd">
+		<id column="ID" property="id" jdbcType="INTEGER" />
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="BY_USER_ID" property="byUserId" jdbcType="INTEGER" />
+		<result column="STATUS" property="status" jdbcType="TINYINT" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="DELETE_TAG" property="deleteTag" jdbcType="TINYINT" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, USER_ID, BY_USER_ID, STATUS, CREATE_TIME, UPDATE_TIME, DELETE_TAG
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_user_wechat_add
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_user_wechat_add
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.dsy.dadui.sdk.entity.user.UserWechatAdd">
+		insert into t_user_wechat_add (ID, USER_ID, BY_USER_ID,
+		STATUS, CREATE_TIME, UPDATE_TIME,
+		DELETE_TAG)
+		values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR},
+		#{byUserId,jdbcType=INTEGER},
+		#{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+		#{deleteTag,jdbcType=TINYINT})
+	</insert>
+	<insert id="insertSelective" parameterType="com.dsy.dadui.sdk.entity.user.UserWechatAdd">
+		insert into t_user_wechat_add
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="byUserId != null">
+				BY_USER_ID,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME,
+			</if>
+			<if test="deleteTag != null">
+				DELETE_TAG,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="byUserId != null">
+				#{byUserId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=TINYINT},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleteTag != null">
+				#{deleteTag,jdbcType=TINYINT},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.dsy.dadui.sdk.entity.user.UserWechatAdd">
+		update t_user_wechat_add
+		<set>
+			<if test="userId != null">
+				USER_ID = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="byUserId != null">
+				BY_USER_ID = #{byUserId,jdbcType=INTEGER},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=TINYINT},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateTime != null">
+				UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="deleteTag != null">
+				DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.dsy.dadui.sdk.entity.user.UserWechatAdd">
+		update t_user_wechat_add
+		set USER_ID = #{userId,jdbcType=VARCHAR},
+		BY_USER_ID = #{byUserId,jdbcType=INTEGER},
+		STATUS = #{status,jdbcType=TINYINT},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+		UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+		DELETE_TAG = #{deleteTag,jdbcType=TINYINT}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>

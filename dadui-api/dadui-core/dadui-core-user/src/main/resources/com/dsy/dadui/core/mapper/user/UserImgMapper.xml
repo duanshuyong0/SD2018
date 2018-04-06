@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dsy.dadui.core.mapper.user.UserImgMapper">
+  <resultMap id="BaseResultMap" type="com.dsy.dadui.sdk.entity.user.UserImg">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="OPENID" jdbcType="VARCHAR" property="openid" />
+    <result column="IMG_PATH" jdbcType="VARCHAR" property="imgPath" />
+    <result column="IS_MAIN" jdbcType="TINYINT" property="isMain" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="DELETE_TAG" jdbcType="TINYINT" property="deleteTag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, OPENID, IMG_PATH, IS_MAIN, CREATE_TIME, UPDATE_TIME, DELETE_TAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_img
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user_img
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.dsy.dadui.sdk.entity.user.UserImg">
+    insert into t_user_img (ID, USER_ID, OPENID, 
+      IMG_PATH, IS_MAIN, CREATE_TIME, 
+      UPDATE_TIME, DELETE_TAG)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, 
+      #{imgPath,jdbcType=VARCHAR}, #{isMain,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteTag,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dsy.dadui.sdk.entity.user.UserImg">
+    insert into t_user_img
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="openid != null">
+        OPENID,
+      </if>
+      <if test="imgPath != null">
+        IMG_PATH,
+      </if>
+      <if test="isMain != null">
+        IS_MAIN,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="deleteTag != null">
+        DELETE_TAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null">
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isMain != null">
+        #{isMain,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null">
+        #{deleteTag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dsy.dadui.sdk.entity.user.UserImg">
+    update t_user_img
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        OPENID = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgPath != null">
+        IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isMain != null">
+        IS_MAIN = #{isMain,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTag != null">
+        DELETE_TAG = #{deleteTag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dsy.dadui.sdk.entity.user.UserImg">
+    update t_user_img
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      OPENID = #{openid,jdbcType=VARCHAR},
+      IMG_PATH = #{imgPath,jdbcType=VARCHAR},
+      IS_MAIN = #{isMain,jdbcType=TINYINT},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      DELETE_TAG = #{deleteTag,jdbcType=TINYINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="get" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_img
+    where USER_ID = #{userId,jdbcType=VARCHAR} and DELETE_TAG !=1
+  </select>
+    
+</mapper>

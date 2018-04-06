@@ -1,0 +1,22 @@
+
+#datasource
+spring:  
+  datasource:  
+    driverClassName: com.mysql.jdbc.Driver 
+    url: jdbc:mysql://127.0.0.1:3306/loonxi?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root  
+    password: 123456  
+    minIdle: 5  
+    maxActive: 200  
+    initialSize: 10  
+    timeBetweenEvictionRunsMillis: 3000  
+    minEvictableIdleTimeMillis: 300000  
+    validationQuery: SELECT 1
+    testWhileIdle: true  
+    testOnBorrow: false  
+    testOnReturn: false   
+ 
+#mybatis    
+mybatis:   
+  mapperLocations: classpath*:com/loonxi/fshop/dao/mapper/*.xml  
+  typeAliasesPackage: com.loonxi.fshop.model
