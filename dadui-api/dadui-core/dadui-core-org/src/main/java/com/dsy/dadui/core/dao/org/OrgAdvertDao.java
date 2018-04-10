@@ -20,9 +20,9 @@ public class OrgAdvertDao {
 	@Autowired
 	private OrgAdvertMapper orgAdvertMapper;
 
-	public List<OrgAdvert> getList(long orgId) {
+	public List<OrgAdvert> getList() {
 		
-		return orgAdvertMapper.getList(orgId);
+		return orgAdvertMapper.getList();
 	}
 			
 	

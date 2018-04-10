@@ -36,7 +36,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		}
 
 		// 用户未登录或session失效
-		if (sessUser == null) {
+		if (sessUser == null && url.indexOf("org/advert/list")==-1) {
 			request.getRequestDispatcher(contextPath + RequestUrlConstants.NO_SESSION_URL).forward(request, response);
 			return false;
 		}

@@ -18,5 +18,5 @@ public interface OrgAdvertMapper {
 
     int updateByPrimaryKey(OrgAdvert record);
 
-	List<OrgAdvert> getList(long orgId);
+	List<OrgAdvert> getList();
 }
