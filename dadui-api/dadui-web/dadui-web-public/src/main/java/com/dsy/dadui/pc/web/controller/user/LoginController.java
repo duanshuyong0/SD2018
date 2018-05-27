@@ -68,10 +68,10 @@ public class LoginController extends BaseController {
 
 		UserVO userVO = null;
 		try {
-			// userVO = userFacade.login(userForm, request);
-			userVO =new UserVO();
-			userVO.setOpenId("llllll");
-			userVO.setSessionId(request.getSession().getId());
+			 userVO = userFacade.login(userForm, request);
+		//	userVO =new UserVO();
+		//	userVO.setOpenId("llllll");
+		//	userVO.setSessionId(request.getSession().getId());
 			setSession(request, userVO);
 		} catch (BusinessException be) {
 			return Result.failure(be.getMessage());

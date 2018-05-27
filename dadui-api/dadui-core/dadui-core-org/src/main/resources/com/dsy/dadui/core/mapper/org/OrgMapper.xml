@@ -160,11 +160,21 @@
 	</update>
 	
 	
-		<select id="getList" resultMap="BaseResultMap">
+	<select id="getList" resultMap="BaseResultMap" parameterType="com.dsy.dadui.sdk.query.org.OrgQuery">
 		select
 		<include refid="Base_Column_List" />
 		from t_org
-		where DELETE_TAG!=1
+		where DELETE_TAG!=1 and STATUS=1
 	</select>
+	
+	<select id="queryCount" resultType="java.lang.Integer"
+		parameterType="com.dsy.dadui.sdk.query.org.OrgQuery">
+		select count(1)
+		from t_org
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			AND DELETE_TAG != 1 and STATUS=1
+		</trim>
+	</select>
+	
 	
 </mapper>

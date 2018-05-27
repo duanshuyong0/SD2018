@@ -3,6 +3,7 @@ package com.dsy.dadui.sdk.service.org;
 import java.util.List;
 
 import com.dsy.dadui.sdk.entity.org.Org;
+import com.dsy.dadui.sdk.query.org.OrgQuery;
 
 
 
@@ -17,8 +18,11 @@ public interface OrgService {
 	
 	/**
 	 * 查询org 组织  List
+	 * @param query 
 	 * @return
 	 */
-	List<Org> getList();
+	List<Org> getList(OrgQuery query);
+
+	int queryCount(OrgQuery query);
 
 }

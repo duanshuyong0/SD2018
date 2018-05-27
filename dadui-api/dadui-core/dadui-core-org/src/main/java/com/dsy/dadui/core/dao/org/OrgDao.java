@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dsy.dadui.core.mapper.org.OrgMapper;
 import com.dsy.dadui.sdk.entity.org.Org;
+import com.dsy.dadui.sdk.query.org.OrgQuery;
 
 
 
@@ -18,9 +19,14 @@ public class OrgDao {
 	@Autowired
 	private OrgMapper orgMapper;
 
-	public List<Org> getList() {
+	public List<Org> getList(OrgQuery query) {
 
-		return orgMapper.getList();
+		return orgMapper.getList(query);
+	}
+
+	public int queryCount(OrgQuery query) {
+		// TODO Auto-generated method stub
+		return orgMapper.queryCount(query);
 	}
 			
 	

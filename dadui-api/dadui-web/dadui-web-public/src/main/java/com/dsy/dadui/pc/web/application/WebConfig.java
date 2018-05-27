@@ -33,7 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 排除/login/和商品评论
 		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns("/trial/**",
-				"/**/login/**", "/dict/item/list", "/system/province/list", "/system/city/list", "/system/continent/**",
+				"/**/login/**", "/**/org/**","/dict/item/list", "/system/province/list", "/system/city/list", "/system/continent/**",
 				"/system/country/list", "/password/forget/**");
 		registry.addInterceptor(new PostRequestInterceptor()).addPathPatterns("/**");
 		super.addInterceptors(registry);

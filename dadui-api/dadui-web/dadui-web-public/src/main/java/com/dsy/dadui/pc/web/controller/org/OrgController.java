@@ -2,6 +2,8 @@ package com.dsy.dadui.pc.web.controller.org;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,7 +15,9 @@ import com.dsy.dadui.common.beans.Result;
 import com.dsy.dadui.common.exception.BusinessException;
 import com.dsy.dadui.pc.web.controller.base.BaseController;
 import com.dsy.dadui.pc.web.facade.org.OrgFacade;
+import com.dsy.dadui.pc.web.form.org.OrgForm;
 import com.dsy.dadui.pc.web.form.org.UserListForm;
+import com.dsy.dadui.pc.web.form.user.UserForm;
 import com.dsy.dadui.pc.web.vo.org.ConListVO;
 import com.dsy.dadui.pc.web.vo.org.UserListVO;
 import com.dsy.dadui.sdk.entity.org.Org;
@@ -36,15 +40,16 @@ public class OrgController extends BaseController{
      */
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET )
-	public Result<List<Org>> queryList() {
+	public Result<Page<Org>> queryList(OrgForm orgForm,
+			HttpServletRequest request) {
 		try {
 			
-			return Result.success("成功", orgFacade.list(getUserId()));
+			return Result.success("成功", orgFacade.list(orgForm));
 		} catch(BusinessException be){
 			return Result.failure(be.getMessage());
 		} catch (Exception e) {
-			logger.error("查询群组列表失败，异常详情：{}", e.getMessage());
-			return Result.failure("查询群组列表失败");
+			logger.error("查询频道列表失败，异常详情：{}", e.getMessage());
+			return Result.failure("查询频道列表失败");
 		}
 	}
 	

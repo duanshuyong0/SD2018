@@ -46,7 +46,7 @@ public class OrgAdvertController extends BaseController{
 			return Result.failure(be.getMessage());
 		} catch (Exception e) {
 			logger.error("查询广告列表失败，异常详情：{}", e.getMessage());
-			return Result.failure("查询群组列表失败");
+			return Result.failure("查询广告列表失败");
 		}
 	}
 	

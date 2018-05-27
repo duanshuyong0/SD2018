@@ -86,7 +86,7 @@ public class UserFacade {
 			user.setCreateTime(new Date());
 			user.setUpdateTime(new Date());
 			flag = userService.insert(user);
-		}
+		} 
 		
 		userVO.setUserId(user.getId());
 		userVO.setOpenId(user.getOpenid());

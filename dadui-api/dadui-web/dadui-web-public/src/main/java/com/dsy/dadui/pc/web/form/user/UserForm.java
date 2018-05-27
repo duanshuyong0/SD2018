@@ -1,8 +1,8 @@
 package com.dsy.dadui.pc.web.form.user;
 
+import com.dsy.dadui.pc.web.form.base.BaseForm;
 
-
-public class UserForm {
+public class UserForm extends BaseForm{
 
 	  	private String username;
 

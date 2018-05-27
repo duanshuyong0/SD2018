@@ -21,6 +21,7 @@ import com.dsy.dadui.common.exception.BusinessException;
 import com.dsy.dadui.common.utils.CommonKeyUtil;
 import com.dsy.dadui.common.utils.DateUtil;
 import com.dsy.dadui.common.utils.MD5;
+import com.dsy.dadui.pc.web.form.org.OrgForm;
 import com.dsy.dadui.pc.web.form.org.UserListForm;
 import com.dsy.dadui.pc.web.form.user.UserForm;
 import com.dsy.dadui.pc.web.form.user.UserTrialForm;
@@ -35,6 +36,7 @@ import com.dsy.dadui.sdk.entity.user.UserExtend;
 import com.dsy.dadui.sdk.entity.user.UserImg;
 import com.dsy.dadui.sdk.enums.user.AccountStatusEnum;
 import com.dsy.dadui.sdk.enums.user.UserTypeEnum;
+import com.dsy.dadui.sdk.query.org.OrgQuery;
 import com.dsy.dadui.sdk.query.org.UserListQuery;
 import com.dsy.dadui.sdk.service.org.OrgConService;
 import com.dsy.dadui.sdk.service.org.OrgService;
@@ -70,14 +72,30 @@ public class OrgFacade {
 
 	/**
 	 * 获取圈子列表
-	 * @param userId
+	 * @param orgForm
 	 * @return
 	 */
-	public List<Org> list(String userId) {
+	public Page<Org> list(OrgForm orgForm) {
 		//get org
-		List<Org> org = orgService.getList();
+		Page<Org> orgs= new Page<Org>();
+		
 
-		return org;
+		OrgQuery query = new OrgQuery();
+		query.setQueryParam(orgForm);
+		query.setOpenId(orgForm.getOpenId());
+		query.setPaging(Boolean.TRUE);
+		// get count
+		int count = orgService.queryCount(query);
+		if (count == 0) {
+			return orgs;
+		}
+		//get list
+		List<Org> org = orgService.getList(query);
+		
+		orgs.setTotalCount(count);
+		orgs.setRecords(org);
+
+		return orgs;
 		
 	}
 	

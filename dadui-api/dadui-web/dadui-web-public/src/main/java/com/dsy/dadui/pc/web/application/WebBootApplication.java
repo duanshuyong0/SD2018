@@ -17,8 +17,6 @@ import org.springframework.context.annotation.ComponentScan;
  * exclude = { DataSourceAutoConfiguration.lass } 排除spring-boot自带的数据源配置
  * </pre>
  *
- * @author <a href="mailto:taojiagui@loonxi.com">云启</a>
- * @version 1.0 2016年12月18日
  */
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @SpringBootApplication

@@ -3,6 +3,7 @@ package com.dsy.dadui.core.mapper.org;
 import java.util.List;
 
 import com.dsy.dadui.sdk.entity.org.Org;
+import com.dsy.dadui.sdk.query.org.OrgQuery;
 
 public interface OrgMapper {
     int deleteByPrimaryKey(Integer id);
@@ -17,5 +18,7 @@ public interface OrgMapper {
 
     int updateByPrimaryKey(Org record);
 
-	List<Org> getList();
+	List<Org> getList(OrgQuery query);
+
+	int queryCount(OrgQuery query);
 }
